@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  background-image: url(./img/concrete.jpg);
+  letter-spacing: 2px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* p {
+  line-height: 30px;
+} */
+
+
+header {
+  background-color: #333;
+  color: #fff;
+  height: 70vh;
+  display: flex;
+  align-items: center; /*上下真ん中 */
+  justify-content: center; /*左右真ん中*/
+  font-size: 50px;
+}
+
+main {
+  max-width: 1000px;
+  width: 100%;
+  margin: 50px auto;
+  background-color: #eee;
+}
+
+section {
+  display: flex;
+  padding-bottom: 100px;
+}
+
+section:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+.artistName {
+  font-size: 50px;
+}
+
+.button {
+  width: 400px;
+  height: 100px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button > a {
+  width: 70%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border:1px solid #555;
+  background-color: #fff;
+}
+
+
+h2.button.even {
+  text-align: right;
+  padding-left: 100px;
+}
+
+h2.button.even > a {
+  margin-left: 90px;
+}
+
+.button > a:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+.picture {
+  width: 500px;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.picture > div {
+  background-size: cover;
+  background-position: center;
+}
+
+.picture:nth-of-type(even) {
+  margin-left: auto;
+}
+
+p.text1 {
+  flex-direction: column;
+  background-color: #ccc;
+  opacity: 0;
+  width: 400px;
+  font-size: 19px;
+  padding: 5px;
+}
+
+p.text1.open {
+  opacity: 1;
+}
+
+p.text2 {
+  flex-direction: column;
+  background-color: #ccc;
+  opacity: 0;
+  width: 400px;
+  font-size: 19px;
+  padding: 5px;
+}
+
+p.text2.open {
+  opacity: 1;
+}
+p.text3 {
+  flex-direction: column;
+  background-color: #ccc;
+  opacity: 0;
+  width: 400px;
+  font-size: 19px;
+  padding: 5px;
+}
+
+p.text3.open {
+  opacity: 1;
+}
+
+p.open {
+  transition: .8s;
+  line-height: 30px;
+}
+
+
+
+
+
+/* マスク加工 */
+
+.animation-target {
+  position: relative;
+  overflow: hidden;
+}
+
+.animation-target > a,
+.animation-target > div {
+  opacity: 0;
+}
+
+@keyframes showElements {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animation-target.show > a,
+.animation-target.show > div {
+  animation: showElements 0.01s .9s forwards;
+}
+
+.animation-target::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  transform: translateX(-100%);
+}
+
+@keyframes showMasks {
+  0% {
+    transform: translateX(-100%);
+  }
+  45%,55% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animation-target.show::before {
+  animation:showMasks 1.8s forwards;
+}
+
+
+/* footer */
+#footer {
+  background-color: #eee;
+  width: 100%;
+  height: 8vh;
+}
+
+#footer p {
+  top: 20%;
+  font-size: 0.5rem;
+  padding-top: 27px;
+  text-align: center;
+
+}
